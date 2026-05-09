@@ -53,7 +53,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p>&copy; 2024 Tara Aachar. All rights reserved.</p>
+            <p>&copy; 2026 Tara Aachar. All rights reserved.</p>
             <p>Made with ❤️ for pickle lovers</p>
           </div>
         </div>
