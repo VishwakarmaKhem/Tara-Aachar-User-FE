@@ -127,16 +127,18 @@
 .mobile-drawer {
   display: none;
   position: fixed;
-  top: 64px;
-  right: -100%;
+  top: 60px;
+  right: -280px;
   width: 280px;
-  height: calc(100vh - 64px);
-  background: #1e3a0f;
+  height: calc(100vh - 60px);
+  background: #2d5016;
   z-index: 999;
   flex-direction: column;
-  transition: right 0.3s ease;
+  overflow-x: hidden;
   overflow-y: auto;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease;
+  border-left: 2px solid #1a3009;
+  border-top: 2px solid #1a3009;
 }
 
 .mobile-drawer.open {
@@ -149,6 +151,9 @@
   align-items: center;
   gap: 0.9rem;
   padding: 1.5rem 1.25rem 1.25rem;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .mobile-avatar {
@@ -257,11 +262,10 @@
   text-align: center;
   color: #ffaaaa;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   border-radius: 10px;
-  border: 1px solid rgba(255, 100, 100, 0.25) !important;
   transition: background 0.2s ease;
 }
 
@@ -299,13 +303,10 @@
 
   .mobile-drawer {
     display: flex;
-    top: 60px;
-    height: calc(100vh - 60px);
   }
 
   .mobile-backdrop {
-    display: block;
-    top: 60px;
+    display: none;
   }
 }
 
@@ -317,6 +318,7 @@
   }
 
   .mobile-drawer {
-    background: #0f1a05;
+    background: #1a3009;
+    border-color: #0f1a05;
   }
 }

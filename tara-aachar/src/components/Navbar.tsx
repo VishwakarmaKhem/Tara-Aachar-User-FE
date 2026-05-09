@@ -9,17 +9,29 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
+  
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    document.body.style.overflow = '';
+  };
 
   const handleNavClick = () => {
-    closeMenu();
+    setIsMenuOpen(false);
+    document.body.style.overflow = '';
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
   };
 
+  const handleToggle = () => {
+    const next = !isMenuOpen;
+    setIsMenuOpen(next);
+    document.body.style.overflow = next ? 'hidden' : '';
+  };
+
   const handleLogout = () => {
     logout();
-    closeMenu();
+    setIsMenuOpen(false);
+    document.body.style.overflow = '';
     navigate('/');
   };
 
@@ -49,7 +61,7 @@ const Navbar = () => {
         {/* Hamburger */}
         <div
           className={`navbar-toggle ${isMenuOpen ? 'active' : ''}`}
-          onClick={toggleMenu}
+          onClick={handleToggle}
           aria-label="Toggle navigation menu"
           role="button"
         >
