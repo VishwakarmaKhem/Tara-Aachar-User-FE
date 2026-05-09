@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, user, logout } = useAuth();
+  const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const handleLogout = () => {
+    logout();
+    closeMenu();
+    navigate('/');
   };
 
   return (
@@ -33,6 +37,19 @@ const Navbar = () => {
           <Link to="/contact" className="navbar-link" onClick={closeMenu}>
             Order Now
           </Link>
+
+          {isAuthenticated ? (
+            <>
+              <span className="navbar-user">👤 {user?.email?.split('@')[0]}</span>
+              <button className="navbar-link navbar-logout" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className="navbar-link navbar-login" onClick={closeMenu}>
+              Login
+            </Link>
+          )}
         </div>
 
         <div 

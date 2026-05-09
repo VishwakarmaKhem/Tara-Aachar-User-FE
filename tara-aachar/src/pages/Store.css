@@ -99,13 +99,60 @@
   line-height: 1.6;
   margin-bottom: 1rem;
   font-size: 0.95rem;
+  height: 80px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(45, 80, 22, 0.3) transparent;
+  padding-right: 4px;
+}
+
+.product-description::-webkit-scrollbar {
+  width: 4px;
+}
+
+.product-description::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.product-description::-webkit-scrollbar-thumb {
+  background: rgba(45, 80, 22, 0.3);
+  border-radius: 4px;
+}
+
+.product-description::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 80, 22, 0.5);
 }
 
 .product-features {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(45, 80, 22, 0.3) transparent;
+  padding-bottom: 4px;
+}
+
+.product-features::-webkit-scrollbar {
+  height: 4px;
+}
+
+.product-features::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.product-features::-webkit-scrollbar-thumb {
+  background: rgba(45, 80, 22, 0.3);
+  border-radius: 4px;
+}
+
+.product-features::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 80, 22, 0.5);
+}
+
+.feature-tag {
+  flex-shrink: 0;
 }
 
 .feature-tag {
@@ -326,5 +373,475 @@
 
   .delivery-details p {
     color: #a8d8a8;
+  }
+}
+
+/* Product image from URL */
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Loading state */
+.store-loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #4a7c59;
+}
+
+.loading-spinner {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.store-loading p {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Error state */
+.store-error {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  border: 2px solid rgba(192, 57, 43, 0.2);
+  margin-bottom: 2rem;
+}
+
+.store-error p {
+  color: #c0392b;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.retry-btn {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 80, 22, 0.3);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0 3rem;
+}
+
+.page-btn {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+  color: white;
+  border: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 80, 22, 0.3);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.page-info {
+  color: #2d5016;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Dark mode additions */
+@media (prefers-color-scheme: dark) {
+  .store-error {
+    background: rgba(26, 48, 9, 0.9);
+    border-color: rgba(192, 57, 43, 0.3);
+  }
+
+  .store-loading,
+  .store-loading p {
+    color: #a8d8a8;
+  }
+
+  .page-info {
+    color: #90ee90;
+  }
+}
+
+/* Guest wall */
+.store-guest-wall {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  border: 2px dashed rgba(45, 80, 22, 0.25);
+  margin-bottom: 3rem;
+}
+
+.guest-wall-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.store-guest-wall h2 {
+  font-size: 1.8rem;
+  color: #2d5016;
+  margin-bottom: 0.8rem;
+}
+
+.store-guest-wall p {
+  color: #4a7c59;
+  font-size: 1rem;
+  max-width: 420px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.guest-wall-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.guest-login-btn {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+  color: white;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
+}
+
+.guest-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 80, 22, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  .store-guest-wall {
+    background: rgba(26, 48, 9, 0.92);
+    border-color: rgba(144, 238, 144, 0.2);
+  }
+
+  .store-guest-wall h2 {
+    color: #90ee90;
+  }
+
+  .store-guest-wall p {
+    color: #a8d8a8;
+  }
+}
+
+/* ── Carousel & Showcase shared ── */
+.carousel-section,
+.showcase-section {
+  margin-bottom: 3.5rem;
+}
+
+.carousel-heading {
+  margin-bottom: 1.5rem;
+}
+
+.carousel-heading h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #2d5016;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.carousel-heading p {
+  color: #4a7c59;
+  font-size: 0.95rem;
+}
+
+/* Scrollable track wrapper — hides scrollbar but keeps scroll */
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+  /* hide scrollbar */
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Carousel product cards ── */
+.carousel-card {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(45, 80, 22, 0.12);
+  border: 2px solid rgba(45, 80, 22, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.carousel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(45, 80, 22, 0.2);
+}
+
+.carousel-card-img {
+  height: 120px;
+  background: linear-gradient(135deg, #f0f8e8 0%, #e8f5e8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  position: relative;
+  border-bottom: 1px solid rgba(45, 80, 22, 0.08);
+}
+
+.carousel-badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: linear-gradient(135deg, #2d5016, #4a7c59);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+}
+
+.carousel-card-body {
+  padding: 1rem;
+}
+
+.carousel-card-body h3 {
+  font-size: 1rem;
+  color: #2d5016;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.carousel-tag {
+  background: #e8f5e8;
+  color: #2d5016;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(45, 80, 22, 0.15);
+}
+
+.carousel-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2d5016;
+}
+
+.carousel-price span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #4a7c59;
+}
+
+/* ── See More card (carousel) ── */
+.carousel-see-more {
+  flex: 0 0 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+  cursor: pointer;
+  border: none;
+  min-height: 220px;
+}
+
+.carousel-see-more:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(45, 80, 22, 0.35);
+}
+
+.see-more-inner {
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
+.see-more-arrow {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.6rem;
+  animation: nudge 1.5s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+.see-more-inner p {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.see-more-hint {
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+/* ── Showcase cards ── */
+.showcase-card {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 1.5rem 1.2rem;
+  box-shadow: 0 8px 24px rgba(45, 80, 22, 0.1);
+  border: 2px solid rgba(45, 80, 22, 0.08);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.showcase-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(45, 80, 22, 0.2);
+}
+
+.showcase-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.showcase-card h3 {
+  font-size: 1rem;
+  color: #2d5016;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.showcase-card p {
+  font-size: 0.85rem;
+  color: #4a7c59;
+  line-height: 1.5;
+}
+
+/* ── See More card (showcase) ── */
+.showcase-see-more {
+  flex: 0 0 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4a7c59 0%, #2d5016 100%);
+  cursor: pointer;
+  border: none;
+  padding: 1.5rem 1rem;
+}
+
+.showcase-see-more:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(45, 80, 22, 0.35);
+}
+
+.showcase-see-more .see-more-inner {
+  color: white;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .carousel-heading h2 {
+    color: #90ee90;
+  }
+
+  .carousel-heading p {
+    color: #a8d8a8;
+  }
+
+  .carousel-card,
+  .showcase-card {
+    background: rgba(26, 48, 9, 0.95);
+    border-color: rgba(144, 238, 144, 0.15);
+  }
+
+  .carousel-card-img {
+    background: linear-gradient(135deg, #1a3009 0%, #2d5016 100%);
+    border-bottom-color: rgba(144, 238, 144, 0.1);
+  }
+
+  .carousel-card-body h3,
+  .showcase-card h3 {
+    color: #90ee90;
+  }
+
+  .carousel-tag {
+    background: #1a3009;
+    color: #90ee90;
+    border-color: rgba(144, 238, 144, 0.2);
+  }
+
+  .carousel-price {
+    color: #90ee90;
+  }
+
+  .carousel-price span,
+  .showcase-card p {
+    color: #a8d8a8;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .carousel-card,
+  .showcase-card {
+    flex: 0 0 180px;
+  }
+
+  .carousel-see-more,
+  .showcase-see-more {
+    flex: 0 0 130px;
   }
 }
