@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
+const scrollToTop = () => {
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+};
+
 const Footer = () => {
   return (
     <footer className="footer">
@@ -22,10 +27,10 @@ const Footer = () => {
           <div className="footer-section">
             <h4>Quick Links</h4>
             <ul className="footer-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/store">Store</Link></li>
-              <li><Link to="/about">Our Story</Link></li>
-              <li><Link to="/contact">Order Now</Link></li>
+              <li><Link to="/" onClick={scrollToTop}>Home</Link></li>
+              <li><Link to="/store" onClick={scrollToTop}>Store</Link></li>
+              <li><Link to="/about" onClick={scrollToTop}>Our Story</Link></li>
+              <li><Link to="/contact" onClick={scrollToTop}>Order Now</Link></li>
             </ul>
           </div>
 
